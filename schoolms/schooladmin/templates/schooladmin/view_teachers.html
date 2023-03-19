@@ -1,0 +1,68 @@
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+    <style>
+        h1{
+            padding-top: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .main {
+            padding-top: 50px;
+            width: 1200px;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+
+{% endblock css %}
+
+{% block content %}
+
+
+
+    <h1> View Teachers </h1>
+
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-12">
+
+                <table class="table table-primary table-striped">
+                    <tr>
+                        <th>Sl. No.</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Qualification</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Experience</th>
+                    </tr>
+                    {% for teacher in teacher_list %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img src="{{teacher.teacher_profile_picture.url}}" alt="" height="100px" width="100px"></td>
+                        <td>{{teacher.teacher_name | upper}} </td>
+                        <td>{{teacher.teacher_email}}</td>
+                        <td>{{teacher.teacher_address}}</td>
+                        <td>{{teacher.qualification}}</td>
+                        <td>{{teacher.teacher_gender}}</td>
+                        <td>{{teacher.teacher_dob}}</td>
+                        <td>{{teacher.exp}} year{{teacher.exp | pluralize}}</td>
+                    </tr>
+                    {% endfor %}
+                   
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    {% endblock content %}

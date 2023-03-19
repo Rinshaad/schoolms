@@ -1,0 +1,46 @@
+ .main {
+   display: grid;
+   height: 600px;
+   grid-template-columns: auto auto auto auto auto;
+   grid-template-rows: auto auto auto;
+   grid-gap: 50px;
+   text-align: center;
+   justify-content: center;
+   padding-top: 50px;
+ }
+
+ .hm {
+   grid-area: 2/1/3/2;
+ }
+
+ .add_tr {
+   grid-area: 2/2/3/3;
+ }
+
+ .view_st {
+  grid-area: 2/3/3/4;
+}
+ .view_tr {
+   grid-area: 2/4/3/5;
+ }
+
+.chg_pwd {
+  grid-area: 2/5/3/6;
+}
+ .hm,.add_tr,.view_tr,.view_st,.chg_pwd {
+   height: 150px;
+   width: 250px;
+   border: 1px solid black;
+   font-size: x-large;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   padding-top: 25px;
+   border-radius: 50px;
+   background-color: black;
+   color: white;
+ }
+ a{
+  text-decoration: none;
+ }
+
+
+ 

@@ -1,0 +1,76 @@
+{% extends 'student/base.html'%}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body{
+    background-image: url('/static/images/bg.png');
+}
+        .main {
+            display: grid;
+            height: 600px;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: auto auto auto;
+            grid-gap: 50px;
+            text-align: center;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .student {
+            grid-area: 2/2/3/3;
+        }
+
+        .admin {
+            grid-area: 2/3/3/4;
+        }
+
+        .teacher {
+            grid-area: 2/4/3/5;
+        }
+
+        .student,
+        .admin,
+        .teacher {
+            height: 150px;
+            width: 250px;
+            border: 1px solid black;
+            font-size: x-large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-top: 25px;
+            border-radius: 50px;
+            background-color: black;
+            color: white;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid main">
+        <div class="student"><a href="{% url 'student:home' %}">
+                <h2>HOME</h2>
+            </a></div>
+        <div class="admin"><a href="{% url 'student:profile' %}">
+            <h2>PROFILE</h2></a>
+        </div>
+        <div class="teacher"><a href="{% url 'student:change_pswd' %}">
+            <h2>CHANGE PASSWORD</h2></a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #252525;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom right, rgb(41, 39, 41), rgb(116, 112, 113));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom right, rgb(54, 53, 54), rgb(78, 76, 76))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.card-registration .select {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+}
+
+.card {
+  width: 900px;
+  height: 650px;
+  /* padding-left: 40px; */
+  margin-left: 2px;
+}
+
+.container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}

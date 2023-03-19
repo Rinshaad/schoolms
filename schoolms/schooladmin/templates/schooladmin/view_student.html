@@ -1,0 +1,63 @@
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+    <style>
+        h1 {
+            padding-top: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .main {
+            padding-top: 50px;
+            width: 1200px;
+        }
+    </style>
+{% endblock css %}
+
+
+{% block content %}
+
+
+    <h1> View Student </h1>
+
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-10">
+
+                <table class="table table-primary table-striped">
+                    <tr>
+                        <th>Sl. No.</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>DOB</th>
+                        <th> Phone No</th>
+                        <th>Place</th>
+                        <th>Class Teacher</th>
+                        <th>Parent Name</th>
+                    </tr>
+                    {% for student in student_list %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img src="{{student.student_profile_picture.url}}" alt="" height="100px" width="100px"></td>
+                        <td>{{student.student_name}} </td>
+                        <td>{{student.student_email}}</td>
+                        <td>{{student.student_dob}}</td>
+                        <td>{{student.student_phone_number}}</td>
+                        <td>{{student.student_place}}</td>
+                        <td>{{student.teacher.teacher_name}}</td>
+                        <td>{{student.s_parent_name}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock content %}

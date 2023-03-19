@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{% static 'css/adm_home.css' %}"> -->
+    <style>
+        h1 {
+            padding-top: 50px;
+            text-align: center;
+            font-weight: bold;
+
+        }
+
+        .main {
+            padding-top: 50px;
+            width: 1200px;
+        }
+        .nodata{
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h1> View Student </h1>
+
+    {% if student_list %}
+
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-10">
+
+                <table class="table table-primary table-striped">
+                    <tr>
+                        <th>Sl. No.</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>DOB</th>
+                        <th> Phone No</th>
+                        <th>Place</th>
+                        <th>Password</th>
+                        <th>Parent Name</th>
+                    </tr>
+                    {% for student in student_list %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img src="{{student.student_profile_picture.url}}" alt="" height="100px" width="100px"></td>
+                        <td>{{student.student_name | upper}} </td>
+                        <td>{{student.student_email}}</td>
+                        <td>{{student.student_dob}}</td>
+                        <td>{{student.student_phone_number}}</td>
+                        <td>{{student.student_place}}</td>
+                        <td>{{student.student_password}}</td>
+                        <!-- <td>{{student.student_}}</td> -->
+                        <td>{{student.s_parent_name}}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+    <h1 class="nodata">No data found</h1>
+    
+    {% endif %} 
+</body>
+
+</html>

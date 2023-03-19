@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        .main {
+            display: grid;
+            height: 600px;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: auto auto auto;
+            grid-gap: 50px;
+            text-align: center;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .student {
+            grid-area: 2/2/3/3;
+        }
+
+        .admin {
+            grid-area: 2/3/3/4;
+        }
+
+        .teacher {
+            grid-area: 2/4/3/5;
+        }
+
+        .student,
+        .admin,
+        .teacher {
+            height: 150px;
+            width: 250px;
+            border: 1px solid black;
+            font-size: x-large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-top: 20px;
+            border-radius: 50px;
+            background-color: black;
+            color: white;
+        }
+        h2{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "common/navbar.html" %}
+  <br>
+  <br>
+
+    <div class="container-fluid main">
+        <div class="student"><a href="{% url 'common:a_login' %}">
+                <h2>ADMIN</h2>
+            </a></div>
+        <div class="admin"><a href="{% url 'common:s_login' %}">
+            <h2>STUDENT</h2></a>
+        </div>
+        <div class="teacher"><a href="{% url 'common:t_login' %}">
+            <h2>TEACHER</h2></a>
+        </div>
+    </div>
+
+
+
+{% include "common/footer.html" %}
+
+
+</body>
+
+</html>

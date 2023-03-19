@@ -1,0 +1,38 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <link rel="stylesheet" href="{% static 'css/a_login.css' %}">
+</head>
+<body>
+    {% include "common/navbar.html" %}
+
+<section>
+    <div id="container">
+    <form method="POST" id="form">
+        {% csrf_token %}
+        <p>Admin Login</p><br><br>
+        <label for="user">Username</label><br>
+        <input type="text" id="user" name="admin_username" required><br>
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="admin_password"><br><br>
+        <label for="remember" class="remember"> &ensp;&ensp; Remember me &ensp;&ensp; </label>
+        <input type="checkbox" id="remember" name="Remember">
+        <button type="submit">Login</button><br><br><br>
+        <a href="{% url 'common:a_signup' %}" style="font-size: medium;">create a account</a>
+        {{invalid_data}}
+    </form>
+    <div id="error"></div>
+    </div>
+
+</section>
+
+    <script src="{% static 'css/login.js' %}"></script>
+
+
+</body>
+</html>
