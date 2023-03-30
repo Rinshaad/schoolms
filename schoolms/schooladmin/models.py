@@ -7,6 +7,7 @@ class AdminLogin(models.Model):
     admin_id = models.CharField(max_length = 25)  
     admin_pswd = models.CharField(max_length = 30)
 
+
     class Meta:
         db_table = 'adminlogin'
 
@@ -20,9 +21,15 @@ class Teacher(models.Model):
     teacher_gender = models.CharField(max_length = 10)    
     teacher_profile_picture = models.ImageField(upload_to = 'teacher/')
     teacher_password = models.CharField(max_length = 20)
+    subject = models.CharField(max_length=50,default='')
+    tutor = models.CharField(max_length=50,default='')
+
 
     class Meta:
         db_table = 'teacher'
+
+
+    
 
 
 

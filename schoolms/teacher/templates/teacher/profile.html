@@ -1,0 +1,75 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+.profile-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #ccc;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .profile-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile-card h2 {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+  
+  .profile-card p {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .profile-card hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-card .btn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-card .btn:hover {
+    background-color: #3e8e41;
+  }
+</style>
+{% endblock css %}
+
+{% block content %}
+
+
+<div class="profile-card">
+    <img src="{{teacher.teacher_profile_picture.url}}" alt="teacher Profile Picture">
+    <h2>{{teacher.teacher_name}}</h2>
+    <p>Tutor of {{teacher.tutor}}</p>
+    <hr>
+    <p><strong>Subject:</strong> {{teacher.subject}}</p>
+    <p><strong>Email:</strong> {{teacher.teacher_email}}</p>
+    <p><strong>Qualification:</strong> {{teacher.qualification}}</p>
+    <p><strong>Experiences:</strong> {{teacher.exp}}</p>
+    <p><strong>Address:</strong> {{teacher.teacher_address}}</p>
+    <p><strong>DOB:</strong> {{teacher.teacher_dob}}</p>
+
+    <a href="#" class="btn">View Profile</a>
+  </div>
+{% endblock content %}
+
+  

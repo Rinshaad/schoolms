@@ -21,6 +21,10 @@
       font-family: sans-serif;
 
     }
+    nav h3{
+      color: rgb(30, 30, 107);
+    }
+    
   </style>
 </head>
 
@@ -28,34 +32,43 @@
 
 
 
-  <div class="bs-example">
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-      <a href="/" class="navbar-brand">Horizon International School</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+     
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+          <a class="navbar-brand ms-3" href="index.html">
+            <img src="{% static 'images/logo.png' %}" alt="">
+            <span >
+              Adward School
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-        <div class="navbar-nav">
-          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'common:home' %}"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'common:a_login' %}"> Admin </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'common:t_login' %}"> Teacher </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'common:s_login' %}"> Student </a>
+                </li>
 
 
-        </div>
-
-        <div class="navbar-nav">
-          <a href="/" class="nav-item nav-link active">Home</a>
-          <a href="{% url 'common:a_login' %}" class="nav-item nav-link">Admin</a>
-          <a href="{% url 'common:t_login' %}" class="nav-item nav-link">Teacher</a>
-          <a href="{% url 'common:s_login' %}" class="nav-item nav-link">Student</a>
-        </div>
-
-
-
-
-      </div>
-    </nav>
-  </div>
-
+              </ul>
+            </div>
+              
+        </nav>
+   
 
 </body>
 

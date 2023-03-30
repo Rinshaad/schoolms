@@ -1,0 +1,174 @@
+
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="{% static 'css/add_tr.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+{% endblock css %}
+
+{% block content %}
+
+    <section class="container">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+                <h3 class="text-center mb-1 pb-2 pb-md-0 mb-md-2">Edit Teacher</h3>
+                <h6 class="text-success">{{success_msg}}</h6>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+
+                            <div class="form-outline">
+                                <input type="text" id="Name" name="t_name" class="form-control form-control-lg" />
+                                <label class="form-label" for="Name">Name</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <div class="form-outline">
+                                <input type="email" id="email" name="t_email" class="form-control form-control-lg" />
+                                <label class="form-label" for="email">Email</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                            <div class="form-outline">
+                                <textarea class="form-control form-control-lg" id="Address" name="t_address" rows="2"
+                                    cols="40">
+                                            </textarea>
+                                <label class="form-label" for="Address">Address</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <h6 class="mb-2 pb-1">Gender </h6>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="t_gender" id="femaleGender"
+                                    value="Female" />
+                                <label class="form-check-label" for="femaleGender">Female</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="t_gender" id="maleGender"
+                                    value="Male" />
+                                <label class="form-check-label" for="maleGender">Male</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline datepicker w-100">
+                                <input type="date" class="form-control form-control-lg" id="birthdayDate"
+                                    name="t_dob" />
+                                <label for="birthdayDate" class="form-label">DOB</label>
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-md-6 mb-4 pb-2">
+
+                            <div class="form-outline">
+                                <input type="text" id="password" name="t_password"
+                                    class="form-control form-control-lg" />
+                                <label class="form-label" for="password">Password</label>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+
+                            <select class="select form-control-lg" name="t_qualification">
+                                <option value="" selected disabled>Choose option</option>
+                                <option value="MSc,BEd">MSc,BEd</option>
+                                <option value="MA">MA</option>
+                                <option value="MSc">MSc</option>
+                            </select><br>
+                            <label class="form-label select-label">Qualification</label>
+
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+
+                            <div class="form-outline">
+                                <input type="text" id="Experience" name="t_exp" class="form-control form-control-lg" />
+                                <label class="form-label" for="Experience">Experience</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-6 mb-4 pb-2">
+    
+                                <select class="select form-control-lg" name="t_standard">
+                                    <option value="" selected disabled>Choose option</option>
+                                    <option value="+1">PLUS ONE</option>
+                                    <option value="+2">PLUS TWO</option>
+                                </select><br>
+                                <label class="form-label select-label">Standard</label>
+    
+                            </div>
+    
+                            <div class="col-md-6 mb-4">
+
+                                <div class="form-outline">
+                                    <input type="text" id="Experience" name="t_subject" class="form-control form-control-lg" />
+                                    <label class="form-label" for="Experience">Subject</label>
+                                </div>
+    
+                            </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 mb-4 pb-2 mt-3">
+
+                            <div class="form-outline">
+                                <input type="file" id="t_img" name="t_photo" class="form-control form-control-lg" />
+                                <label class="form-label" for="t_img">Upload Photo</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-2 pt-2">
+                        <button type="submit" class="btn btn-lg btn-dark">Edit & Save</button>
+                    </div>                   
+                    
+                </form>
+            </div>
+        </div>
+
+    </section>
+    
+    {% endblock content %}

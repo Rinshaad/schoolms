@@ -1,0 +1,67 @@
+{% extends 'student/base.html' %}
+{% load static %}
+
+
+{% block header %}
+<style>
+    h1 {
+        padding-top: 50px;
+        text-align: center;
+        font-weight: bold;
+
+    }
+
+    .main {
+        padding-top: 50px;
+        width: 1200px;
+    }
+    .nodata{
+        color: blue;
+    }
+</style>
+{% endblock header %}
+
+{% block content %}
+<h1> Leave Applications of students </h1>
+
+    
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-10">
+
+            <table class="table table-primary table-striped">
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Name</th>
+                    <th>Teacher Name</th>
+                    <th>Reason for leave</th>
+                    <th>Start date</th>
+                    <th>End date</th>
+                    <th>Status</th>
+
+
+
+
+                </tr>
+                {% for i in leave_apps %}
+
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.name | upper}} </td>
+                    <td>{{i.student.teacher.teacher_name}}</td>
+                    <td>{{i.reason}}</td>
+                    <td>{{i.start_date}}</td>
+                    <td>{{i.end_date}}</td>
+                    <td><b>{{i.status}}</b></td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

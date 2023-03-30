@@ -1,76 +1,78 @@
 {% extends 'student/base.html'%}
 {% load static %}
+{% block header %}
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <style>
-        body{
-    background-image: url('/static/images/bg.png');
+        body {
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
-        .main {
-            display: grid;
-            height: 600px;
-            grid-template-columns: auto auto auto auto auto;
-            grid-template-rows: auto auto auto;
-            grid-gap: 50px;
-            text-align: center;
-            justify-content: center;
-            padding-top: 50px;
-        }
 
-        .student {
-            grid-area: 2/2/3/3;
-        }
+.profile-card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
 
-        .admin {
-            grid-area: 2/3/3/4;
-        }
+.profile-card img {
+  border-radius: 50%;
+  max-width: 200px;
+  margin: 0 auto 20px;
+  display: block;
+}
 
-        .teacher {
-            grid-area: 2/4/3/5;
-        }
+.profile-card h1 {
+  font-size: 28px;
+  margin: 0;
+}
 
-        .student,
-        .admin,
-        .teacher {
-            height: 150px;
-            width: 250px;
-            border: 1px solid black;
-            font-size: x-large;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            padding-top: 25px;
-            border-radius: 50px;
-            background-color: black;
-            color: white;
-        }
-        a{
-            text-decoration: none;
-        }
+.profile-card p {
+  font-size: 18px;
+  margin: 5px 0 20px;
+}
+
+.profile-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.profile-card li {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+.profile-card li strong {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
     </style>
-</head>
 
-<body>
+{% endblock header %}
+{% block content %}
 
-    <div class="container-fluid main">
-        <div class="student"><a href="{% url 'student:home' %}">
-                <h2>HOME</h2>
-            </a></div>
-        <div class="admin"><a href="{% url 'student:profile' %}">
-            <h2>PROFILE</h2></a>
-        </div>
-        <div class="teacher"><a href="{% url 'student:change_pswd' %}">
-            <h2>CHANGE PASSWORD</h2></a>
-        </div>
-    </div>
 
-</body>
+    <div class="profile-card">
+        <img src="{{s_details.student_profile_picture.url }}" alt="Profile Picture">
+        <h1>{{s_details.student_name | upper}}</h1>
+        <h2>YOUR ID :{{s_details.id}}</h2>
 
-</html>
+       
+      </div>
+{% endblock content %}
+
+  
+

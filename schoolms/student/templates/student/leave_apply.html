@@ -1,0 +1,91 @@
+{% extends 'student/base.html' %}
+{% load static %}
+
+
+{% block header %}
+    <style>
+        /* Apply a background color to the entire page */
+.container {
+    background-color: #f2f2f2;
+}
+
+/* Center the form on the page */
+form {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+}
+
+/* Style the form headings */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+/* Style the form labels and inputs */
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"], textarea, input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Style the form submit button */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Style the form submit button on hover */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+    </style>
+    {% endblock header %}
+
+{% block content %}
+
+    <div class="container">
+	<h1>Student Leave Application Form</h1>
+
+	<form  method="POST">
+        {% csrf_token %}
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required><br><br>
+
+		<label for="class">Class:</label>
+		<input type="text" id="class" name="class" required><br><br>
+
+		<label for="reason">Reason for Leave:</label><br>
+		<textarea id="reason" name="reason" rows="5" cols="50" required></textarea><br><br>
+
+		<label for="start_date">Start Date:</label>
+		<input type="date" id="start_date" name="start_date" required><br><br>
+
+		<label for="end_date">End Date:</label>
+		<input type="date" id="end_date" name="end_date" required><br><br>
+
+		<input type="submit" value="Submit">
+        <span class="text-danger"> {{status}}</span> 
+        
+	</form>
+
+</div>
+
+{% endblock content %}
+

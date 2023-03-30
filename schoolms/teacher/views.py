@@ -1,14 +1,24 @@
 from django.shortcuts import render
 from .models import Student
+from student.models import StudentLeave
+
+from schooladmin.models import Teacher
+
 
 # Create your views here.
 
 
 def t_home(request):
+        
+    teacher = Teacher.objects.get(id =request.session['teacher_id'])
    
-        return render(request,'teacher/t_home.html')
+    return render(request,'teacher/t_home.html',{'teacher':teacher})
+
 def profile(request):
-    return render(request,'teacher/profile.html')
+
+    teacher = Teacher.objects.get(id =request.session['teacher_id'])
+
+    return render(request,'teacher/profile.html',{'teacher':teacher})
 
 def view_student(request):
 
@@ -54,4 +64,31 @@ def add_student(request):
 def change_pswd(request):
    
     return render(request,'teacher/change_password.html',)
+
+
+def student_leave(request):
+
+    studentleave =StudentLeave.objects.filter(status='pending')
+
+    if request.method == 'POST':
+        student_id = request.POST['student_id']
+        leave_app = StudentLeave.objects.get(student_id = student_id)
+
+        if 'approve' in request.POST :
+            leave_app.status = 'approved'
+            leave_app.save()
+
+        if 'reject' in request.POST  :
+            leave_app.status = 'rejected'
+            leave_app.save()
+
+
+
+   
+    return render(request,'teacher/students_leave.html',{'studentleave':studentleave})
+
+
+def leave_apply(request):
+   
+    return render(request,'teacher/leave_apply.html',)
 
