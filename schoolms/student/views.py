@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from teacher.models import Student
 from .models import StudentLeave
+from schooladmin.models import Notice
+
 
 # Create your views here.
 
@@ -76,8 +78,10 @@ def leave_apply(request):
 
 def notices(request):
 
+    notices = Notice.objects.all().order_by('-id')
 
-    return render(request,'student/notices.html')
+
+    return render(request,'student/notices.html',{'notices':notices})
 
 def leaveapplications(request):
 

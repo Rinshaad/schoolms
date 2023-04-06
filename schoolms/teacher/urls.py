@@ -11,6 +11,8 @@ urlpatterns = [
   path('change_password',views.change_pswd,name='change_pswd'),
   path('studentleave',views.student_leave,name='student_leave'),
   path('leaveapply',views.leave_apply,name='leave_apply'),
+  path('logout',views.logout,name='logout'),
+
 
 
 ]

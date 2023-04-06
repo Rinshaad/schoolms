@@ -28,6 +28,34 @@ class Teacher(models.Model):
     class Meta:
         db_table = 'teacher'
 
+class Notice(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.CharField(max_length=100)
+    date = models.CharField(max_length=50,default='')
+
+
+    class Meta:
+        db_table = 'notice'
+
+
+class Subject(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'subject'
+
+class Class(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'classes'
+
+
+
+
+
+
+
 
     
 

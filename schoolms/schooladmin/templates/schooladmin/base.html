@@ -193,7 +193,9 @@
     <a href="{% url 'schooladmin:view_teacher' %}"><i class="fas fa-chalkboard-teacher"></i><span>Teachers</span></a>
     <a href="{% url 'schooladmin:view_student' %}"><i class="fas fa-user-graduate"></i><span>Students</span></a>
     <a href="{% url 'schooladmin:change_pswd' %}"><i class="fas fa-gears"></i><span>Change Password</span></a>
-    <a href="/admin-notice"><i class="fas fa-bullhorn"></i><span>Notice</span></a>
+    <a href="{% url 'schooladmin:notice' %}"><i class="fas fa-bullhorn"></i><span>Add Notice</span></a>
+    <a href="{% url 'schooladmin:subjects' %}"><i class="fas fa-bullhorn"></i><span>Add Subjects</span></a>
+
 
 
   </div>

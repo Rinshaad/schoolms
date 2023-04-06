@@ -8,7 +8,10 @@ from teacher.models import Student
 
 
 def home(request):
-    return render(request,'common/home.html')
+
+    teachers = Teacher.objects.all()[0:4]
+    
+    return render(request,'common/home.html',{'teachers':teachers})
 
 def a_login(request):
 

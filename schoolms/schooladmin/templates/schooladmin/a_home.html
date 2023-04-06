@@ -1,4 +1,7 @@
+
 {% extends "schooladmin/base.html" %}
+{% include "common/navbar.html" %}
+
 
 
 {% load static %}
@@ -95,7 +98,22 @@
      </div>
 
     </a>
+    
 
+</div>
+<div class="wrapper">
+  <H6 class="bg-dark text-white text-center">notice board</H6>
+  <div class="container">
+    <ul class="text-center bg-warning">
+      {% for i in notices %}
+      <li>
+        <h3>{{ i.title }}</h3>
+        <p>{{ i.content }}</p>
+      </li>
+      <hr>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 
     

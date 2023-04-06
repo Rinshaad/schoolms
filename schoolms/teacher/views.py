@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Student
 from student.models import StudentLeave
 
@@ -71,8 +71,8 @@ def student_leave(request):
     studentleave =StudentLeave.objects.filter(status='pending')
 
     if request.method == 'POST':
-        student_id = request.POST['student_id']
-        leave_app = StudentLeave.objects.get(student_id = student_id)
+        s_id = request.POST['student_id']
+        leave_app = StudentLeave.objects.get(id = s_id)
 
         if 'approve' in request.POST :
             leave_app.status = 'approved'
@@ -90,5 +90,10 @@ def student_leave(request):
 
 def leave_apply(request):
    
-    return render(request,'teacher/leave_apply.html',)
+    return render(request,'teacher/leave_apply.html')
+
+def logout(request):
+    del request.session['teacher_id']
+    request.session.flush()
+    return redirect('common:t_login')
 

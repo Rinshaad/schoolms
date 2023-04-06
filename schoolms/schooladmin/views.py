@@ -1,12 +1,17 @@
 from django.shortcuts import render
-from .models import Teacher
+from .models import Teacher,Notice,Subject
+from teacher.models import Student
+
+
 
 # Create your views here.
 
 
 
 def a_home(request):
-    return render(request,'schooladmin/a_home.html')
+
+    notices = Notice.objects.all()
+    return render(request,'schooladmin/a_home.html',{'notices':notices})
 
 def add_teacher(request):
 
@@ -38,7 +43,8 @@ def add_teacher(request):
     return render(request,'schooladmin/add_teacher.html',{'success_msg':success_msg})
 
 def view_student(request):
-    return render(request,'schooladmin/view_student.html')
+    students = Student.objects.all()
+    return render(request,'schooladmin/view_student.html',{'students':students})
 
 def view_teacher(request):
 
@@ -48,6 +54,20 @@ def view_teacher(request):
 
 def change_pswd(request):
     return render(request,'schooladmin/change_password.html')
+
+def subjects(request):
+
+    msg = ''
+
+    if request.method == 'POST':
+        subject_name = request.POST['subject_name']
+
+        subject = Subject(name = subject_name)
+        subject.save()
+
+        msg= 'added successfully'
+
+    return render(request,'schooladmin/subjects.html',{'msg':msg})
 
 def edit_teachers(request,t_id):
 
@@ -79,3 +99,16 @@ def edit_teachers(request,t_id):
     success_msg ='teacher updated successfully'
 
     return render(request,'schooladmin/edit_teachers.html',{'success_msg':success_msg})
+
+def notice(request):
+    msg = ''
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+
+        notice = Notice(title = title ,content = content)
+        notice.save()
+        msg = 'posted successfully'
+
+    return render(request,'schooladmin/notice.html',{'msg':msg})

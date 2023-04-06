@@ -10,6 +10,10 @@ urlpatterns = [
   path('view_teacher',views.view_teacher,name='view_teacher'),
   path('view_student',views.view_student,name='view_student'),
   path('change_password',views.change_pswd,name='change_pswd'),
-  path('edit_teacher/<int:t_id>',views.edit_teachers,name='edit_teachers')
+  path('edit_teacher/<int:t_id>',views.edit_teachers,name='edit_teachers'),
+  path('notice',views.notice,name='notice'),
+  path('subjects',views.subjects,name='subjects'),
+
+
 
 ]

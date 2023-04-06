@@ -487,10 +487,10 @@ a:focus {
           <h1>
             school
           </h1>
-          <p>
+          <!-- <p>
             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
             some form, by injected humour, or randomised
-          </p>
+          </p> -->
           <div class="hero_btn-continer">
             <a href="" class="call_to-btn btn_white-border">
               <span>
@@ -517,7 +517,7 @@ a:focus {
         About School
       </h2>
       <p class="text-center">
-        The White School International (TWSI) is a highly progressive and enterprising international school in Kerala, pledged to provide quality education with emphasis on traditional values. At TWSI, we are re-inventing education by breaking old moulds of thought. This progressive thinking has led to progressive teaching methods and brought about a tremendous change in how education is imparted.
+        The Adward School International (TWSI) is a highly progressive and enterprising international school in Kerala, pledged to provide quality education with emphasis on traditional values. At TWSI, we are re-inventing education by breaking old moulds of thought. This progressive thinking has led to progressive teaching methods and brought about a tremendous change in how education is imparted.
       </p>
       <div class="about_img-box ">
         <img src="{% static 'images/kids.jpg'%}" alt="" class="img-fluid w-100">
@@ -543,41 +543,22 @@ a:focus {
       <h2 class="main-heading ">
         Our Teachers
       </h2>
-      <p class="text-center">
-        Ipsum available, but the majority h
-      </p>
+    
       <div class="teacher_container layout_padding2">
         <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top" src="{% static 'images/teacher-1.jpg'%}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Den Mark</h5>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="{% static 'images/teacher-2.jpg'%}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Leena jorj</h5>
-            </div>
 
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="{% static 'images/teacher-3.jpg'%}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Magi Den</h5>
+          {% for i in teachers %}
 
-            </div>
-
-          </div>
 
           <div class="card">
-            <img class="card-img-top" src="{% static 'images/teacher-4.jpg'%}" alt="Card image cap">
+            <img class="card-img-top" src="{{ i.teacher_profile_picture.url }}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">jonson mark</h5>
-
+              <h5 class="card-title">{{i.teacher_name}}</h5>
             </div>
-
           </div>
+
+          {% endfor %}
+        
         </div>
       </div>
 

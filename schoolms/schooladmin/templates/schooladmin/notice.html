@@ -1,0 +1,65 @@
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+
+<style>
+    form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  display: block;
+  background-color: #008CBA;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+</style>
+   
+{% endblock css %}
+
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="title">Notice Title:</label>
+    <input type="text" id="title" name="title">
+
+    <label for="post_date">Post Date:</label>
+		<input type="date" id="post_date" name="post_date" required>
+  
+    <label for="content">Notice Content:</label>
+    <textarea id="content" name="content"></textarea>
+  
+    <button type="submit">Post Notice</button>
+    <h6 class="text-success">{{msg}}</h6>
+  </form>
+  
+
+{% endblock content %}
