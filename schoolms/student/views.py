@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from teacher.models import Student
 from .models import StudentLeave
-from schooladmin.models import Notice
+from schooladmin.models import Notice ,Timetable,Teacher
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -92,6 +93,32 @@ def leaveapplications(request):
 
     return render(request,'student/leave_applications.html',{'leave_apps':leave_apps})
 
+
+
+
+def timetable(request):
+
+
+
+    student_id = request.session['student_id']
+    student_class = Student.objects.get(id=student_id).student_class.id
     
+   
+    timetable = Timetable.objects.filter(day_of_week__in=['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],class_name_id =student_class)
+    weekdays = {'monday': [], 'tuesday': [], 'wednesday': [], 'thursday': [], 'friday': []}
+
+    for entry in timetable:
+        weekdays[entry.day_of_week].append(entry)
+
+  
+    return render(request,'student/timetable.html',{'timetable':weekdays})
+
+   
+
+    
+
+def get_data(request):
+    timetable_data = list(Timetable.objects.values())
+    return JsonResponse(timetable_data, safe=False)
 
 

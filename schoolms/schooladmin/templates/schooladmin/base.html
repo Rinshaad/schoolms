@@ -173,7 +173,7 @@
       <i class="fas fa-bars" id="sidebar_btn"></i>
     </label>
     <div class="left_area">
-      <h3>ADWARD-Admin </h3>
+      <h3>ADWARD </h3>
     </div>
     <div class="right_area">
       <a href="/logout" class="logout_btn">Logout</a>
@@ -184,17 +184,20 @@
   <div class="sidebar">
     <center>
 
-      <img src="{% static 'images/admin-icn.png' %}" class="profile_image" alt="">
-      <h4>Admin</h4>
+      <h4>Admin Panel</h4>
 
     </center>
 
     <a href="{% url 'schooladmin:home' %}"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-    <a href="{% url 'schooladmin:view_teacher' %}"><i class="fas fa-chalkboard-teacher"></i><span>Teachers</span></a>
-    <a href="{% url 'schooladmin:view_student' %}"><i class="fas fa-user-graduate"></i><span>Students</span></a>
+    <a href="{% url 'schooladmin:add_teacher' %}"><i class="fas fa-chalkboard-teacher"></i><span>Teachers</span></a>
+    <a href="{% url 'schooladmin:timetable' %}"><i class="fas fa-user-graduate"></i><span>Timetable</span></a>
     <a href="{% url 'schooladmin:change_pswd' %}"><i class="fas fa-gears"></i><span>Change Password</span></a>
     <a href="{% url 'schooladmin:notice' %}"><i class="fas fa-bullhorn"></i><span>Add Notice</span></a>
     <a href="{% url 'schooladmin:subjects' %}"><i class="fas fa-bullhorn"></i><span>Add Subjects</span></a>
+    <a href="{% url 'schooladmin:add_timetable' %}"><i class="fas fa-bullhorn"></i><span>Add Timetable</span></a>
+    <a href="{% url 'schooladmin:add_class' %}"><i class="fas fa-bullhorn"></i><span>Add Class</span></a>
+
+
 
 
 

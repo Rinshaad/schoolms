@@ -1,5 +1,5 @@
 from django.db import models
-from schooladmin.models import Teacher
+from schooladmin.models import Teacher,Class
 
 # Create your models here.
 
@@ -13,6 +13,7 @@ class Student(models.Model):
     s_parent_name = models.CharField(max_length = 30)    
     student_profile_picture = models.ImageField(upload_to = 'student/')
     student_password = models.CharField(max_length = 20)
+    student_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         db_table = 'student'

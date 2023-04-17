@@ -39,12 +39,31 @@ button[type=submit]:hover {
     background-color: #45a049;
 }
 
+.subjects-list {
+  list-style: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+}
+
+.subjects-list li {
+  padding: 10px; /* Adds padding to each list item */
+  background-color: #eee; /* Adds background color to each list item */
+  border-bottom: 1px solid #ddd; /* Adds a border at the bottom of each list item */
+}
+
+.subjects-list li:last-child {
+  border-bottom: none; /* Removes the border from the last list item */
+}
+
+
     </style>
 {% endblock css %}
 
 
 {% block content %}
 <div class="container">
+
+    <div class="row">
+
 
 <form method="POST" >
     {% csrf_token %}
@@ -54,6 +73,26 @@ button[type=submit]:hover {
     <button type="submit">Add Subject</button>
     <p>{{msg}}</p>
 </form>
+</div>
+
+    <div class="wrapper mt-5">
+        <H3 class="bg-dark text-white text-center">SUBJECTS</H3>
+        <div class="container">
+          <ul class="text-center  ">
+            {% for i in subjects %}
+            <li>
+      
+              <h5>{{ i.name }}</h5>
+            </li>
+            <hr>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    
+
+</div>
+
 </div>
 
 {% endblock content %}

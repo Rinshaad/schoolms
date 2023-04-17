@@ -1,0 +1,102 @@
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text,time"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+  }
+</style>
+{% endblock css %}
+
+
+{% block content %}
+<h2 class="text-center mb-3">Add Timetable</h2>
+<hr>
+<form method="POST">
+  {% csrf_token %}
+  <p>
+    <label for="id_day_of_week">Day of Week:</label>
+    <select name="day_of_week" id="id_day_of_week">
+      <option value="monday">Monday</option>
+      <option value="tuesday">Tuesday</option>
+      <option value="wednesday">Wednesday</option>
+      <option value="thursday">Thursday</option>
+      <option value="friday">Friday</option>
+      <option value="saturday">Saturday</option>
+    </select>
+  </p>
+
+  <p><label for="id_time_slot">Time Slot:</label>
+    <select name="time_slot" id="id_time_slot">
+      {% for time_slot, label in time_slot_choices %}
+        <option value="{{ time_slot }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p><label for="id_class_name">Class Name:</label>
+    <select name="class_name" id="id_class_name">
+      <option value="">select class</option>
+
+      {% for i in classes %}
+
+      <option value="{{i.id}}">{{i.name}}</option>
+      {% endfor %}
+
+    </select>
+  </p>
+
+  <p><label for="id_class_name">Subject:</label>
+    <select name="subject" id="id_subject">
+      <option value="">select subject</option>
+
+      {% for i in subjects %}
+
+      <option value="{{i.id}}">{{i.name}}</option>
+      {% endfor %}
+
+    </select>
+  </p>
+  <p><label for="id_class_name">Teacher:</label>
+    <select name="teacher" id="id_teacher">
+      <option value="">select teacher</option>
+
+      {% for i in teachers %}
+
+      <option value="{{i.id}}">{{i.teacher_name}}</option>
+      {% endfor %}
+
+    </select>
+  </p>
+
+
+  <button type="submit">Add Timetable</button>
+  <p>{{msg }}</p>
+</form>
+
+{% endblock content %}

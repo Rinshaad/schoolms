@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Student
 from student.models import StudentLeave
 
-from schooladmin.models import Teacher
+from schooladmin.models import Teacher,Class,Timetable
 
 
 # Create your views here.
@@ -29,6 +29,8 @@ def view_student(request):
 
 def add_student(request):
 
+    class_name = Class.objects.all()
+
     msg = ""
     if request.method == 'POST':
         s_name = request.POST['s_name']
@@ -39,6 +41,8 @@ def add_student(request):
         parent_name = request.POST['p_name']
         s_photo = request.FILES['s_photo']  
         s_password = request.POST['s_password'] 
+        class_name = request.POST['class_name'] 
+
 
        #exist() not in get - only in filter -  result will be boolean
         email_exist = Student.objects.filter(student_email = s_email).exists()  
@@ -53,13 +57,14 @@ def add_student(request):
                 s_parent_name = parent_name,
                 student_profile_picture = s_photo, 
                 student_password = s_password, 
-                teacher_id = request.session['teacher_id'])
+                teacher_id = request.session['teacher_id'],
+                student_class_id = class_name )
             student.save()
             msg = "Student added successfully"
         else:
             msg = "Student already added"
 
-    return render(request,'teacher/add_student.html',{'status':msg})
+    return render(request,'teacher/add_student.html',{'status':msg,'classes':class_name})
 
 def change_pswd(request):
    
@@ -91,6 +96,14 @@ def student_leave(request):
 def leave_apply(request):
    
     return render(request,'teacher/leave_apply.html')
+def timetable(request):
+    
+    teacher_id = request.session['teacher_id']
+    teacher_timetable = Timetable.objects.filter(teacher_id=teacher_id)
+
+    return render(request,'teacher/timetable.html',{'teacher_timetable':teacher_timetable})
+
+
 
 def logout(request):
     del request.session['teacher_id']

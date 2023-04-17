@@ -33,6 +33,8 @@
                         <th>Sl. No.</th>
                         <th>Photo</th>
                         <th>Name</th>
+                        <th>class</th>
+
                         <th>Email</th>
                         <th>DOB</th>
                         <th>Phone No</th>
@@ -45,6 +47,8 @@
                         <td>{{forloop.counter}}</td>
                         <td><img src="{{student.student_profile_picture.url}}" alt="" height="100px" width="100px"></td>
                         <td>{{student.student_name}} </td>
+                        <td>{{student.student_class.name}} </td>
+
                         <td>{{student.student_email}}</td>
                         <td>{{student.student_dob}}</td>
                         <td>{{student.student_phone_number}}</td>

@@ -107,7 +107,24 @@
                                 <label class="form-label" for="ParentName">Parent Name</label>
                             </div>
                         </div>
+                        
                     </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <label class="form-label me-5" for="classname">Class Name</label>
+
+                                <select name="class_name" id="">
+                                    <option value="">select class</option>
+                                    {% for i in classes %}
+                                      <option value="{{ i.id }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                  </select>
+                               
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="row">
                         <div class="col-md-6 mb-4">

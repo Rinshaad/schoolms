@@ -1,0 +1,79 @@
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+
+<style>
+    table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td[colspan="3"] {
+  text-align: center;
+}
+
+</style>
+
+{% endblock css %}
+
+
+{% block content %}
+
+<h1>Timetable</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Time Slot</th>
+
+      <th>Subject</th>
+      <th>Teacher</th>
+
+
+      <th>Class Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for day, entries in timetable.items %}
+    <tr>
+      <th colspan="4" class=" text-center"><strong>{{ day | upper}}</strong></th>
+    </tr>
+    {% for entry in entries %}
+    <tr>
+      <td>{{ entry.time_slot }}</td>
+      <td>{{ entry.subject.name | capfirst}}</td>
+      <td>{{ entry.teacher.teacher_name | capfirst}}</td>
+
+      <td>{{ entry.class_name.name | capfirst }}</td>
+    </tr>
+    {% endfor %}
+    {% empty %}
+    <tr>
+      <td colspan="4">No entries found.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

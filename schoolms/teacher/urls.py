@@ -10,8 +10,10 @@ urlpatterns = [
   path('view_student',views.view_student,name='view_student'),
   path('change_password',views.change_pswd,name='change_pswd'),
   path('studentleave',views.student_leave,name='student_leave'),
-  path('leaveapply',views.leave_apply,name='leave_apply'),
+  path('leaveapply',views.leave_apply,name='leaveapply'),
   path('logout',views.logout,name='logout'),
+  path('timetable',views.timetable,name='timetable'),
+
 
 
 

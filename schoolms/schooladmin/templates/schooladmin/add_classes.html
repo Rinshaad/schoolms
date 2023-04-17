@@ -1,0 +1,74 @@
+{% extends "schooladmin/base.html" %}
+
+
+{% load static %}
+
+{% block css %}
+    <style>
+      form {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+input[type=text] {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button[type=submit]:hover {
+    background-color: #45a049;
+}
+
+    </style>
+{% endblock css %}
+
+
+{% block content %}
+<div class="container">
+
+<form method="POST" >
+    {% csrf_token %}
+    <label for="subject_name">class Name:</label>
+    <input type="text" id="class_name" name="class_name" required>
+    <br><br>
+    <button type="submit">Add Class</button>
+    <p>{{msg}}</p>
+</form>
+
+<div class="wrapper mt-5">
+    <H3 class="bg-dark text-white text-center"> CLASSES</H3>
+    <div class="container">
+      <ul class="text-center  ">
+        {% for i in classes %}
+        <li>
+  
+          <h5>{{ i.name }}</h5>
+        </li>
+        <hr>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

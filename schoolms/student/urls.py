@@ -11,6 +11,9 @@ urlpatterns = [
   path('leaveapply',views.leave_apply,name='leave_apply'),
   path('notices',views.notices,name='notices'),
   path('leaveapp',views.leaveapplications,name='leaveapp'),
+  path('timetable',views.timetable,name='timetable'),
+  path('get_data',views.get_data, name='get_data')
+
 
 
 

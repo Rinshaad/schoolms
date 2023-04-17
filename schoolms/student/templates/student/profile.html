@@ -62,6 +62,7 @@ body {
 </style>
 {% endblock header %}
 
+
   
 {% block content %}
   
@@ -74,6 +75,8 @@ body {
         <li><strong>DOB:</strong> {{s_details.student_dob}} </li>
         <li><strong>Phone number:</strong>{{s_details.student_phone_number}} </li>
         <li><strong>Parent Name:</strong> {{s_details.s_parent_name}}</li>
+        <li><strong>Class:</strong> {{s_details.student_class.name}}</li>
+
         <li><strong>Teacher Name:</strong> {{s_details.teacher.teacher_name}}</li>
 
 

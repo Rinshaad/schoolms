@@ -13,6 +13,12 @@ urlpatterns = [
   path('edit_teacher/<int:t_id>',views.edit_teachers,name='edit_teachers'),
   path('notice',views.notice,name='notice'),
   path('subjects',views.subjects,name='subjects'),
+  path('add_timetable',views.add_timetable,name='add_timetable'),
+  path('add_class',views.add_class,name='add_class'),
+  path('timetable',views.timetable,name='timetable'),
+
+
+
 
 
 
