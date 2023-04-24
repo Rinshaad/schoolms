@@ -98,8 +98,6 @@ def leaveapplications(request):
 
 def timetable(request):
 
-
-
     student_id = request.session['student_id']
     student_class = Student.objects.get(id=student_id).student_class.id
     
